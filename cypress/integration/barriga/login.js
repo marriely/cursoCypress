@@ -1,6 +1,6 @@
 /// <reference types='cypress' />
 
-import {EMAIL, SENHA, BTN_ENTRAR} from '../support/elements/loginElements.js';
+import {EMAIL, SENHA, BTN_ENTRAR} from '../../support/elements/loginElements.js';
 
 describe('Realizar login', () => {
     beforeEach(()=>{
@@ -22,7 +22,7 @@ describe('Realizar login', () => {
         cy.get(BTN_ENTRAR)
             .click()
 
-        cy.get('.toast').should('be.visible')
+        cy.get('.toast').should('contain','Bem vindo')
             
 
     })//it login com sucesso

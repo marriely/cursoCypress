@@ -29,7 +29,9 @@ describe('work with basic element', () => {
         cy.xpath('//input[contains(@onclick,\'Francisco\')]') 
         // o //input faz ir direto para o um input ai dentro de [] eu coloco as "regras" para filtrar mais o elemento
         cy.xpath('//table[@id=\'tabelaUsuarios\']//td[contains(.,\'Francisco\')]/following-sibling::td/input')
-
+        //eu inicio o xpath com //no exemplo acima eu peguei uma table com id 'tabelaUsuario', quando eu colo o [] na frente do elemento eu irei
+        //especificar mais detalhes do elemento
+        // o .. eu estou subindo o nivel e depois dou um //e vou para outro elemento
         //.. sobe um nivel, quando uso o @ é a propriedade, exemplo @id
         cy.xpath("//td[contains(.,'Usuario A')]/following-sibling::td[contains(.,'Mestrado')]/..//input[@type='text']").type('funciona')
         //quando eu coloco dentro do "" é bom para quando tem espaço

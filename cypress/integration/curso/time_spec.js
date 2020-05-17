@@ -26,7 +26,11 @@ describe('work with basic element', () => {
     it.only('Tick vai para o futuro', ()=>{
         cy.get('#buttonTimePassed').click()
         cy.get('#resultado > span').should('contain', '158')
-        cy.get('#resultado > span').invoke('text').should('gt', 1587933052610) 
+        cy.get('#resultado > span').invoke('text').then(t=> {
+            const number = parseInt(t)
+            cy.wrap(number).should('gt', 1589719172931)
+        })
+         
     })
 
 })

@@ -1,6 +1,6 @@
 
 
-import {MENU_SETTINGS, MENU_CONTAS, BTN_ADD_CONTA, NOME_CONTA} from '../support/elements/loginElements.js';
+import {MENU_SETTINGS, MENU_CONTAS, BTN_ADD_CONTA, NOME_CONTA} from './elements/Elements.js';
 
 Cypress.Commands.add('acessoMenuConta', ()=>{
     cy.get(MENU_SETTINGS).click();

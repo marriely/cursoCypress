@@ -1,13 +1,13 @@
 /// <reference types='cypress' />
 
-import {EMAIL, SENHA, BTN_ENTRAR, MENU_SETTINGS, MENU_CONTAS, BTN_ADD_CONTA, NOME_CONTA, MENU_RESETAR, BTN_ALTERAR_CONTA, MESSAGE} from '../../support/elements/loginElements.js';
+import {XP_BTN_ALTERAR_CONTA, EMAIL, SENHA, BTN_ENTRAR, MENU_SETTINGS, MENU_CONTAS, BTN_ADD_CONTA, NOME_CONTA, MENU_RESETAR, BTN_ALTERAR_CONTA, MESSAGE, MENU_MOVIMENTACAO, DESCRICAO_MOVIMENTACAO, VALOR_MOVIMENTACAO, INTERESSADO_MOVIMENTACAO, BTN_ADD_MOVIMENTACAO, XP_BUSCA_ELEMENTO, LINHAS_MOVIMENTACAO, STATUS_MOVIMENTACAO} from '../../support/elements/Elements.js';
 
 import data from '../../support/data/data.js';
 
 import {} from '../../support/commandConta';
 
 
-describe('Realizar login', () => {
+describe('Realiza fluxo funcional', () => {
     before(()=>{    
         cy.login(data.login.usuario, data.login.senha)
         cy.resetApp();    
@@ -23,7 +23,7 @@ describe('Realizar login', () => {
 
     it('Alterando conta', ()=>{
         cy.acessoMenuConta();
-        cy.xpath(BTN_ALTERAR_CONTA).click();
+        cy.xpath(XP_BTN_ALTERAR_CONTA).click();
         cy.adicionaConta(data.conta.alteracao);  
         cy.get(MESSAGE).should('contain',data.conta.mensagem_Alteracao);  
 
@@ -33,8 +33,24 @@ describe('Realizar login', () => {
         cy.acessoMenuConta();
         cy.adicionaConta('mercado alteração');
         cy.get(MESSAGE).should('contain', 'status code 400');
+    })// it conta com nome repetido
+
+    it('Deve criar uma movimentação', ()=>{
+        cy.get(MENU_MOVIMENTACAO).click();
+        cy.get(DESCRICAO_MOVIMENTACAO).type('Teste 1');
+        cy.get(VALOR_MOVIMENTACAO).type(50);
+        cy.get(INTERESSADO_MOVIMENTACAO).type('Marry');
+        cy.get(STATUS_MOVIMENTACAO).click();
+        cy.get(BTN_ADD_MOVIMENTACAO).click();
+        cy.get(MESSAGE).should('contain', 'sucesso');
+        cy.get(LINHAS_MOVIMENTACAO).should('have.length', 7); //aqui como eu tenho controle da massa de dados, eu sei que toda inserção deverá ter uma listagem com 7 registros.
+        cy.xpath(XP_BUSCA_ELEMENTO).should('exist');
+    })//it criar movimentação
+
+    it('Consulta extrato', ()=>{
+        
     })
 
-})//describe
+})//describe teste funcional
 
 

@@ -25,7 +25,7 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 import data from '../support/data/data.js';
-import {EMAIL, SENHA, BTN_ENTRAR, MENU_SETTINGS, MENU_RESETAR, MESSAGE} from '../support/elements/loginElements.js';
+import {EMAIL, SENHA, BTN_ENTRAR, MENU_SETTINGS, MENU_RESETAR, MESSAGE} from '../support/elements/Elements.js';
 
 Cypress.Commands.add('clickAlert', (locator, message)=>{
     cy.get(locator).click()
@@ -46,4 +46,4 @@ Cypress.Commands.add('clickAlert', (locator, message)=>{
   Cypress.Commands.add('resetApp', ()=>{
     cy.get(MENU_SETTINGS).click();
     cy.get(MENU_RESETAR).click();
-  })
+  })//resetApp

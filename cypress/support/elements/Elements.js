@@ -12,7 +12,7 @@ export const NOME_CONTA = '[data-test=nome]';
 export const BTN_ADD_CONTA = '.btn';
 
 //Elementos para alterar conta
-export const XP_BTN_ALTERAR_CONTA = "//table//td[contains(., 'mercado')]/..//i[@class='far fa-edit']";
+export const FN_XP_BTN_ALTERAR_CONTA = nome => `//table//td[contains(., '${nome}')]/..//i[@class='far fa-edit']`;
 
 //Elementos para validação de mensagem
 export const MESSAGE = '.toast';
@@ -24,13 +24,14 @@ export const VALOR_MOVIMENTACAO = '[data-test=valor]';
 export const INTERESSADO_MOVIMENTACAO = '[data-test=envolvido]';
 export const BTN_ADD_MOVIMENTACAO = '.btn-primary';
 export const LINHAS_MOVIMENTACAO = '.list-group >';
-export const XP_BUSCA_ELEMENTO = "//span[contains(.,'Teste 1')]/following-sibling::small[contains(.,'50')]";
+export const FN_XP_BUSCA_ELEMENTO = (desc, value) => `//span[contains(.,'${desc}')]/following-sibling::small[contains(.,'${value}')]`;
 export const STATUS_MOVIMENTACAO = '[data-test=status]';
+export const CONTA_MOVIMENTACAO = '[data-test=conta]';
 
 //Elementos para consulta extrato
 export const MENU_INICIAL = '[data-test=menu-home]';
-export const FN_XP_SALDO_CONTA = `//td[contains(.,'${nome}')]/../td[2]`; 
-//coloquei o xpath entre ``para poder chamar a variavel no meio
+export const FN_XP_SALDO_CONTA = nome => `//td[contains(.,'${nome}')]/../td[2]`; 
+//coloquei o xpath entre crase no inicio e no fim ``para poder chamar a variavel no meio (fazer a interpolação)
 //vou criar uma função e passar o paramento o nome que eu sempre vou querer buscar
 
 

@@ -1,3 +1,5 @@
 {
-    "baseUrl": "http://barrigareact.wcaquino.me/"    
+    "baseUrl": "http://barrigareact.wcaquino.me/",
+    "viewportHeight": 1000 ,
+    "viewportWidth": 1900    
 }

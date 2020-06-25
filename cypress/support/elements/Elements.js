@@ -34,6 +34,9 @@ export const FN_XP_SALDO_CONTA = nome => `//td[contains(.,'${nome}')]/../td[2]`;
 //coloquei o xpath entre crase no inicio e no fim ``para poder chamar a variavel no meio (fazer a interpolação)
 //vou criar uma função e passar o paramento o nome que eu sempre vou querer buscar
 
+//Elementos para excluir movimentação
+export const MENU_EXTRATO = '[data-test="menu-extrato"]';
+export const FN_XP_EXCLUI_CONTA = nome => `//span[contains(.,'${nome}')]/../../..//i[@class='far fa-trash-alt']`
 
 
 

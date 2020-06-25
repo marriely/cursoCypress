@@ -6,8 +6,26 @@ export default {
     },
     conta: {
         nome: 'mercado',
-        alteracao: ' alteração',
+        alteracao: 'Conta para alterar',
+        novo_nome: 'alterada',
+        mesmo_nome: 'Conta mesmo nome',
         mensagem_cadastro: 'Conta inserida com sucesso',
-        mensagem_Alteracao: 'Conta atualizada com sucesso'
-    }
+        mensagem_alteracao: 'Conta atualizada com sucesso',
+        mensagem_erro: 'status code 400',
+        mensagem_sucesso: 'sucesso'
+    },
+
+    movimentacao:
+    {
+        descricao: 'Teste 1',
+        valor: '50',
+        interessado: 'Marry',
+        conta: 'Conta para movimentacoes'
+    },
+
+    extrato:
+    {
+        conta: 'Conta para saldo',
+        exclusao: 'Movimentacao para exclusao'
+    },
 }

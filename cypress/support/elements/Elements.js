@@ -37,7 +37,7 @@ export const FN_XP_SALDO_CONTA = nome => `//td[contains(.,'${nome}')]/../td[2]`;
 //Elementos para excluir movimentação
 export const MENU_EXTRATO = '[data-test="menu-extrato"]';
 export const FN_XP_EXCLUI_CONTA = nome => `//span[contains(.,'${nome}')]/../../..//i[@class='far fa-trash-alt']`
-
+export const FN_XP_ALTERA_CONTA = nome => `//span[contains(.,'${nome}')]/../../..//i[@class='fas fa-edit']`
 
 
 

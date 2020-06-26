@@ -26,6 +26,8 @@ export default {
     extrato:
     {
         conta: 'Conta para saldo',
-        exclusao: 'Movimentacao para exclusao'
+        exclusao: 'Movimentacao para exclusao',
+        alteracao: 'Movimentacao 1, calculo saldo',
+        
     },
 }

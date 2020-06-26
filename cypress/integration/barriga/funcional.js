@@ -1,6 +1,6 @@
 /// <reference types='cypress' />
 
-import {FN_XP_BTN_ALTERAR_CONTA, EMAIL, SENHA, BTN_ENTRAR, MENU_SETTINGS, MENU_CONTAS, BTN_ADD_CONTA, NOME_CONTA, MENU_RESETAR, BTN_ALTERAR_CONTA, MESSAGE, MENU_MOVIMENTACAO, DESCRICAO_MOVIMENTACAO, VALOR_MOVIMENTACAO, INTERESSADO_MOVIMENTACAO, BTN_ADD_MOVIMENTACAO, FN_XP_BUSCA_ELEMENTO, LINHAS_MOVIMENTACAO, STATUS_MOVIMENTACAO, MENU_INICIAL, FN_XP_SALDO_CONTA, CONTA_MOVIMENTACAO, MENU_EXTRATO, FN_XP_EXCLUI_CONTA} from '../../support/elements/Elements.js';
+import {FN_XP_BTN_ALTERAR_CONTA, EMAIL, SENHA, BTN_ENTRAR, MENU_SETTINGS, MENU_CONTAS, BTN_ADD_CONTA, NOME_CONTA, MENU_RESETAR, BTN_ALTERAR_CONTA, MESSAGE, MENU_MOVIMENTACAO, DESCRICAO_MOVIMENTACAO, VALOR_MOVIMENTACAO, INTERESSADO_MOVIMENTACAO, BTN_ADD_MOVIMENTACAO, FN_XP_BUSCA_ELEMENTO, LINHAS_MOVIMENTACAO, STATUS_MOVIMENTACAO, MENU_INICIAL, FN_XP_SALDO_CONTA, CONTA_MOVIMENTACAO, MENU_EXTRATO, FN_XP_EXCLUI_CONTA, FN_XP_ALTERA_CONTA} from '../../support/elements/Elements.js';
 
 import data from '../../support/data/data.js';
 
@@ -11,12 +11,12 @@ describe('Realiza fluxo funcional', () => {
     before(()=>{    
         cy.login(data.login.usuario, data.login.senha)        
      
-    })//before 
+    })//before que será executado apenas uma vez
 
     beforeEach(()=>{
         cy.get(MENU_INICIAL).click();
         cy.resetApp(); 
-    })
+    }) //before que será executado antes de cada it
 
     it('Inserir conta', ()=> {
         cy.acessoMenuConta();
@@ -55,7 +55,19 @@ describe('Realiza fluxo funcional', () => {
 
     it.only('Consulta extrato', ()=>{
         cy.get(MENU_INICIAL).click();
-        cy.xpath(FN_XP_SALDO_CONTA(data.extrato.conta)).should('contain', '534')
+        cy.xpath(FN_XP_SALDO_CONTA(data.extrato.conta)).should('contain', '534');
+
+        cy.get(MENU_EXTRATO).click();
+        cy.xpath(FN_XP_ALTERA_CONTA(data.extrato.alteracao)).click();
+        //cy.wait(1000); não é ideial deixar com um tempo fixo, precisa ter um sincronismo mais inteligente
+
+        cy.get(DESCRICAO_MOVIMENTACAO).should('have.value', data.extrato.alteracao);
+        cy.get(STATUS_MOVIMENTACAO).click();
+        cy.get(BTN_ADD_MOVIMENTACAO).click();
+        cy.get(MESSAGE).should('contain', 'sucesso');
+
+        cy.get(MENU_INICIAL).click();
+        cy.xpath(FN_XP_SALDO_CONTA(data.extrato.conta)).should('contain', '4.034,00');
 
     })//consulta extrato
 
